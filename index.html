@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Диастаз — мягкое восстановление кора и тазового дна</title>
+  <style>
+    :root{--bg:#f4f6fb;--card:#fff;--text:#0f172a;--muted:#475569;--accent:#2563eb;--ok:#16a34a}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1120px;margin:0 auto;padding:20px}
+    header{display:flex;justify-content:space-between;align-items:center}
+    header .brand{display:flex;align-items:center;gap:8px;font-weight:700}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--ok)}
+    nav a{margin-left:14px;text-decoration:none;color:var(--muted);font-size:14px}
+
+    /* Hook (мини-карточки сверху) */
+    .hook{margin:16px 0}
+    .hookgrid{display:grid;gap:12px;grid-template-columns:1.2fr 1fr 1fr .9fr}
+    @media (max-width:900px){.hookgrid{grid-template-columns:1fr}}
+    .mini{background:var(--card);border:1px solid #e5e7eb;border-radius:14px;padding:12px;display:flex;gap:12px;align-items:flex-start}
+    .mini svg{flex:0 0 24px;color:var(--accent)}
+    .mini .thumb{flex:0 0 84px;height:56px;border-radius:8px;background:#eef2ff;border:1px solid #e5e7eb}
+    .mini strong{display:block}
+    .btn{border:1px solid #1d4ed8;background:linear-gradient(180deg,#3b82f6,#2563eb);color:#fff;padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer}
+    .btn.secondary{background:#eef2ff;color:#1f2a5a;border-color:#c7d2fe}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;margin:18px 0}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}}
+    h1{margin:0 0 10px;font-size:40px;line-height:1.14}
+    .lead{color:#334155;margin:0 0 14px;font-size:18px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+    .tag{color:#475569;font-size:13px}
+
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:16px;padding:16px}
+    .diag{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:12px;text-align:center}
+
+    /* Why */
+    section{margin:26px 0} .title{font-size:24px;margin:0 0 8px}
+    .grid3{display:grid;gap:12px;grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){.grid3{grid-template-columns:1fr}}
+    .item{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px;display:flex;gap:10px}
+    .item svg{flex:0 0 22px;color:#2563eb}
+
+    /* Модалка */
+    .modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.5)}
+    .modal.open{display:grid}
+    .box{background:#fff;border:1px solid #e5e7eb;border-radius:16px;max-width:520px;width:92%;padding:18px}
+    .field{display:flex;gap:8px;margin-top:8px}
+    input[type=email]{flex:1;padding:10px;border:1px solid #c7d2fe;border-radius:10px}
+    footer{color:#475569;font-size:12px;border-top:1px solid #e5e7eb;padding:18px 0;margin-top:24px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand"><span class="dot"></span>CoreRestore</div>
+      <nav>
+        <a href="#why">Почему мы</a>
+        <a href="#levels">Уровни</a>
+      </nav>
+    </header>
+
+    <!-- Hook -->
+    <section class="hook">
+      <div class="hookgrid">
+        <div class="mini">
+          <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <div><strong>Правильная техника</strong> Куда смотреть и что чувствовать — по шагам.</div>
+          <div class="thumb" aria-hidden="true"></div>
+        </div>
+        <div class="mini">
+          <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <div><strong>Ошибки</strong> Избегаем «домика», раскрытых рёбер и задержки дыхания.</div>
+          <div class="thumb" aria-hidden="true"></div>
+        </div>
+        <div class="mini">
+          <svg viewBox="0 0 24 24"><path d="M3 12c4 0 4-6 8-6s4 6 8 6 4-6 8-6" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          <div><strong>Дыхание</strong> Вдох 3 с → Выдох + мягкое включение 3–4 с → Расслабление.</div>
+          <div class="thumb" aria-hidden="true"></div>
+        </div>
+        <div class="mini">
+          <div><strong>Бесплатно</strong> Заберите «7-дневный Core Reset» и начните сегодня.</div>
+          <button class="btn" id="btn-pdf">Скачать PDF</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <h1>Упражнения при диастазе, мягкое восстановление кора и тазового дна</h1>
+        <p class="lead">Короткие, безопасные для диастаза упражнения тренируют глубокие мышцы кора (ТВА) и тазовое дно. Без скручиваний. Понятные подсказки дыхания. Начните дома.</p>
+        <div class="cta">
+          <button class="btn" id="btn-test">Пройти самотест за 1 минуту</button>
+          <button class="btn secondary" id="btn-install">Получить приложение</button>
+        </div>
+        <div class="tag">Контент с участием специалистов ЛФК/ПТ • образовательные материалы • без рекламы</div>
+      </div>
+
+      <div class="card">
+        <div class="diag">
+          <div style="font-size:16px;color:#334155;margin-bottom:6px">Как выглядит диастаз</div>
+          <!-- простая схема -->
+          <svg viewBox="0 0 420 200" style="width:100%">
+            <rect x="10" y="10" width="180" height="160" rx="16" fill="#fff" stroke="#e5e7eb"/>
+            <rect x="230" y="10" width="180" height="160" rx="16" fill="#fff" stroke="#e5e7eb"/>
+            <rect x="50" y="30" width="30" height="120" fill="#8cb6ff"/>
+            <rect x="110" y="30" width="30" height="120" fill="#8cb6ff"/>
+            <rect x="85" y="30" width="20" height="120" fill="#fbbf24" opacity=".2"/>
+            <text x="100" y="175" text-anchor="middle" fill="#334155" font-size="14">Норма</text>
+
+            <rect x="270" y="30" width="30" height="120" fill="#8cb6ff"/>
+            <rect x="330" y="30" width="30" height="120" fill="#8cb6ff"/>
+            <rect x="305" y="30" width="30" height="120" fill="#fbbf24"/>
+            <text x="320" y="175" text-anchor="middle" fill="#334155" font-size="14">Диастаз (шире зазор)</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Почему мы -->
+    <section id="why">
+      <h2 class="title">Почему CoreRestore отличается</h2>
+      <div class="grid3">
+        <div class="item"><svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4" stroke="currentColor" stroke-width="2" fill="none"/></svg><div><strong>Старт с любого уровня</strong><br>Самотест за 1 минуту → уровень 0–2; план адаптируется еженедельно.</div></div>
+        <div class="item"><svg viewBox="0 0 24 24"><path d="M12 2l7 7-7 7-7-7 7-7z" stroke="currentColor" stroke-width="2" fill="none"/></svg><div><strong>Карточки «так/не так»</strong><br>Правильная форма и самые частые ошибки.</div></div>
+        <div class="item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" fill="none"/></svg><div><strong>Видео-инструктор 90 сек</strong><br>Коротко по делу: дыхание, регрессии, без «воды».</div></div>
+      </div>
+    </section>
+
+    <footer>© <span id="y"></span> CoreRestore. Не медконсультация. При боли/симптомах обратитесь к врачу.</footer>
+  </div>
+
+  <!-- Модалка листа ожидания / PDF -->
+  <div class="modal" id="modal">
+    <div class="box">
+      <h3>Ранний доступ</h3>
+      <p>Оставьте e-mail — пришлём «7-дневный Core Reset» и уведомим о релизе приложения.</p>
+      <form class="field" onsubmit="event.preventDefault();alert('Спасибо! Мы на связи.');closeM()">
+        <input type="email" placeholder="you@email.com" required>
+        <button class="btn" type="submit">Отправить</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Модалка самотеста -->
+  <div class="modal" id="test">
+    <div class="box">
+      <h3>Самотест — 1 минута</h3>
+      <p>Положите 2–3 пальца над пупком. На выдохе немного приподнимите голову. Какой зазор ощущаете?</p>
+      <form onsubmit="event.preventDefault();alert('Старт: мягкие дыхательные циклы × 2–3 подхода.');closeT()">
+        <label><input type="radio" name="gap" required> < 2 пальцев → Уровень 0</label><br>
+        <label><input type="radio" name="gap"> ≈ 2 пальца → Уровень 1</label><br>
+        <label><input type="radio" name="gap"> 2.5–3+ пальца/«домик» → Уровень 2</label><br><br>
+        <button class="btn" type="submit">Что мне начать</button>
+        <button class="btn secondary" type="button" onclick="closeT()">Закрыть</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const modal = document.getElementById('modal');
+    const test  = document.getElementById('test');
+    const openM = ()=> modal.classList.add('open');
+    const closeM= ()=> modal.classList.remove('open');
+    const openT = ()=> test.classList.add('open');
+    const closeT= ()=> test.classList.remove('open');
+
+    document.getElementById('btn-install').onclick = openM;
+    document.getElementById('btn-pdf').onclick     = openM;
+    document.getElementById('btn-test').onclick    = openT;
+
+    modal.addEventListener('click', e=>{ if(e.target===modal) closeM(); });
+    test.addEventListener('click',  e=>{ if(e.target===test)  closeT(); });
+  </script>
+</body>
+</html>
