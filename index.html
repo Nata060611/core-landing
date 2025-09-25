@@ -3,92 +3,101 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CoreRestore — мягкое восстановление: диастаз, тазовое дно, статьи</title>
-<meta name="description" content="Короткие безопасные практики и честные статьи: диастаз, тазовое дно, послеродовое восстановление, климакс, секс и мастурбация.">
+<title>Плоский живот при диастазе — безопасно для кора и тазового дна</title>
+<meta name="description" content="Почему нельзя качать пресс при диастазе, 3 безопасных упражнения с подробной техникой и дыханием. Скачать полный план в PDF.">
 <style>
-  :root{
-    --bg:#f6f7fb;--paper:#ffffff;--ink:#0f172a;--muted:#475569;--accent:#3b82f6;--line:#e5e7eb
-  }
+  :root{--bg:#f6f7fb;--paper:#fff;--ink:#0f172a;--muted:#475569;--accent:#3b82f6;--ok:#16a34a;--line:#e5e7eb}
   *{box-sizing:border-box} img{max-width:100%;display:block}
   body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
-  a{text-decoration:none;color:var(--accent)}
-  .wrap{max-width:1120px;margin:0 auto;padding:20px}
+  a{text-decoration:none;color:var(--accent)} .wrap{max-width:1120px;margin:0 auto;padding:20px}
   /* header */
   .top{position:sticky;top:0;z-index:50;background:rgba(246,247,251,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   .top .row{display:flex;align-items:center;justify-content:space-between;padding:10px 20px}
-  .brand{display:flex;align-items:center;gap:10px}
-  .dot{width:12px;height:12px;border-radius:50%;background:#16a34a}
+  .brand{display:flex;align-items:center;gap:10px}.dot{width:12px;height:12px;border-radius:50%;background:var(--ok)}
   .nav a{color:var(--muted);margin-left:16px;font-size:14px}
   .btn{border:1px solid #1d4ed8;background:linear-gradient(180deg,#7aa2ff,#3b82f6);color:#fff;padding:11px 14px;border-radius:12px;font-weight:700;cursor:pointer}
   .btn.secondary{background:#eef2ff;color:#1f2a5a;border-color:#c7d2fe}
   /* hero */
   .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;padding:22px 0}
   @media(max-width:980px){.hero{grid-template-columns:1fr}}
-  h1{margin:0 0 10px;font-size:42px;line-height:1.14}
-  .lead{margin:0 0 12px;color:#334155}
+  h1{margin:0 0 10px;font-size:40px;line-height:1.14}.lead{margin:0 0 12px;color:#334155}
   .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px}
-  /* hook */
-  .hook{margin:8px 0}
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:#334155;background:#fff}
+  .hook{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 0}
+  /* sections */
+  section{margin:26px 0}.title{font-size:26px;margin:0 0 8px}.muted{color:#475569}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:980px){.grid-3{grid-template-columns:1fr}}
+  .item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}
+  /* facts */
+  .facts{display:grid;gap:12px;grid-template-columns:repeat(3,1fr)}
+  @media(max-width:980px){.facts{grid-template-columns:1fr}}
+  .fact{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}
+  .fact h4{margin:0 0 6px;font-size:18px}
+  /* exercises */
+  .ex-grid{display:grid;gap:12px;grid-template-columns:repeat(3,1fr)}
+  @media(max-width:980px){.ex-grid{grid-template-columns:1fr}}
+  .ex{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
+  .ex .head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .tag{font-size:12px;color:#334155;background:#eef2ff;border:1px solid #c7d2fe;padding:2px 8px;border-radius:999px}
+  .ex ul{margin:8px 0 0 18px;color:#334155}
+  .ex .dos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .ex .dos .good,.ex .dos .bad{background:#f8fafc;border:1px dashed var(--line);border-radius:10px;padding:8px;font-size:14px}
+  .ex .dos .good b{color:#15803d}.ex .dos .bad b{color:#b91c1c}
+  /* myths */
+  .myths{display:grid;gap:12px;grid-template-columns:repeat(3,1fr)}
+  @media(max-width:980px){.myths{grid-template-columns:1fr}}
+  .myth{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer}
+  .myth h4{margin:0 0 6px;font-size:18px}
+  /* chips */
+  .chips{display:flex;gap:8px;flex-wrap:wrap}.chip{padding:6px 10px;border-radius:999px;border:1px dashed var(--line);background:#fff;font-size:13px;cursor:pointer}
+  /* thumbs in hooks */
   .hookgrid{display:grid;gap:12px;grid-template-columns:repeat(3,1fr)}
   @media(max-width:980px){.hookgrid{grid-template-columns:1fr}}
-  .mini{
-    background:#fff;border:1px solid var(--line);border-radius:16px;
-    padding:14px;display:grid;grid-template-columns:1fr 96px;gap:12px;align-items:center;cursor:pointer
-  }
-  .mini h4{margin:0 0 6px;font-size:18px}
-  .mini p{margin:0;color:#334155}
+  .mini{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;grid-template-columns:1fr 96px;gap:12px;align-items:center;cursor:pointer}
+  .mini h4{margin:0 0 6px;font-size:18px}.mini p{margin:0;color:#334155}
   .thumb{width:96px;height:72px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#eef2ff}
   .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:.25s transform}
   .mini:hover .thumb img{transform:scale(1.04)}
-  /* sections */
-  section{margin:26px 0}
-  .title{font-size:26px;margin:0 0 8px}
-  .muted{color:#475569}
-  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  @media(max-width:980px){.grid-3{grid-template-columns:1fr}}
-  .item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer}
-  .item h3{margin:0 0 6px;font-size:18px}
-  .meta{display:flex;gap:10px;flex-wrap:wrap;color:#475569;font-size:12px}
-  /* footer */
-  footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18px 0;margin-top:28px}
   /* modal */
   .modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.45)}
   .modal.open{display:grid}
   .box{background:#fff;border:1px solid var(--line);border-radius:16px;max-width:520px;width:92%;padding:18px}
   .field{display:flex;gap:8px;margin-top:8px}
   input[type=email]{flex:1;padding:12px;border:1px solid #c7d2fe;border-radius:10px}
-  .small{font-size:12px;color:#475569}
-  .actions{display:flex;gap:10px;flex-wrap:wrap}
+  footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18px 0;margin-top:28px}
 </style>
 </head>
 <body>
-  <!-- header -->
+  <!-- HEADER -->
   <div class="top">
     <div class="row wrap">
       <div class="brand"><span class="dot"></span><strong>CoreRestore</strong></div>
       <div class="nav">
-        <a href="#hooks">Главное</a>
-        <a href="#library">Статьи</a>
-        <a href="#metrics">Статистика</a>
+        <a href="#facts">Почему не «пресс»</a>
+        <a href="#ex">3 упражнения</a>
+        <a href="#library">Материалы</a>
       </div>
       <div class="actions">
-        <button class="btn" data-cta="header_test">Самотест 1 мин</button>
-        <button class="btn secondary" data-cta="header_join">Получить доступ</button>
+        <button class="btn" data-cta="header_pdf">Скачать план в PDF</button>
+        <button class="btn secondary" data-cta="header_test">Самотест 1 мин</button>
       </div>
     </div>
   </div>
 
   <div class="wrap">
-    <!-- hero -->
+    <!-- HERO -->
     <section class="hero">
       <div>
-        <h1>Мягкое восстановление без героизма</h1>
-        <p class="lead">Короткие безопасные практики + честные, понятные статьи. Внимание к дыханию, поперечной мышце живота (ТВА) и тазовому дну. Начните с того уровня, где вы есть — и вернитесь завтра ещё на 10 минут.</p>
+        <div class="hook">
+          <span class="pill">диастаз</span><span class="pill">тазовое дно</span><span class="pill">после родов</span>
+        </div>
+        <h1>Плоский живот безопасно: диастаз и тазовое дно</h1>
+        <p class="lead">Короткие практики, понятная техника и дыхание: активируем поперечную мышцу живота (ТВА) и тазовое дно, без скручиваний и «героизма». Начните сегодня — 10 минут.</p>
         <div class="actions">
-          <button class="btn" data-cta="hero_pdf">Скачать «7-дневный Core Reset»</button>
+          <button class="btn" data-cta="hero_pdf">Бесплатный старт «Плоский живот 7 дней»</button>
           <button class="btn secondary" data-cta="hero_random">Случайная 10-минутка</button>
         </div>
-        <div class="small" style="margin-top:6px">PT-информировано • без рекламы и шейминга • образовательные материалы</div>
       </div>
       <div class="card">
         <div style="font-weight:700;margin-bottom:6px">Как выглядит диастаз</div>
@@ -107,94 +116,156 @@
       </div>
     </section>
 
-    <!-- hooks -->
+    <!-- HOOK CARDS (правильная техника / ошибки / PDF) -->
     <section id="hooks" class="hook">
       <div class="hookgrid">
         <article class="mini" data-cta="hook_technique">
           <div>
             <h4>Правильная техника</h4>
-            <p>Куда смотреть и что чувствовать — по шагам.</p>
+            <p>Как подтягивать низ живота и тазовое дно на выдохе, без «домика».</p>
           </div>
-          <div class="thumb">
-            <img src="./img/technique.jpg" alt="Правильная техника (превью)">
-          </div>
+          <div class="thumb"><img src="./img/technique.jpg" alt="Правильная техника"></div>
         </article>
-
         <article class="mini" data-cta="hook_mistakes">
           <div>
-            <h4>Ошибки</h4>
-            <p>Избегаем «домика», раскрытых рёбер и задержки дыхания.</p>
+            <h4>Типичные ошибки</h4>
+            <p>«Домик», распахнутые рёбра, задержка дыхания — «так/не так».</p>
           </div>
-          <div class="thumb">
-            <img src="./img/mistakes.jpg" alt="Ошибки (превью)">
-          </div>
+          <div class="thumb"><img src="./img/mistakes.jpg" alt="Ошибки"></div>
         </article>
-
         <article class="mini" data-cta="hook_pdf">
           <div>
-            <h4>Бесплатно</h4>
-            <p>Заберите «7-дневный Core Reset» и начните сегодня.</p>
+            <h4>Скачать PDF</h4>
+            <p>Полный план на 4 недели + чек-лист «стоп-флаги».</p>
           </div>
-          <div class="thumb">
-            <img src="./img/pdf.jpg" alt="PDF (превью)">
-          </div>
+          <div class="thumb"><img src="./img/pdf.jpg" alt="PDF план"></div>
         </article>
       </div>
     </section>
 
-    <!-- library -->
+    <!-- FACTS: ПОЧЕМУ НЕ «КАЧАТЬ ПРЕСС» -->
+    <section id="facts">
+      <h2 class="title">Почему «качать пресс» при диастазе — плохая идея</h2>
+      <div class="facts">
+        <div class="fact">
+          <h4>1) Скручивания ↑ давление</h4>
+          <p class="muted">Классические скручивания/«складочки» повышают внутрибрюшное давление и вызывают выпячивание («домик»). Это растягивает белую линию и может <em>усугубить</em> зазор.</p>
+        </div>
+        <div class="fact">
+          <h4>2) Неправильная мышечная «иерархия»</h4>
+          <p class="muted">Скручивания бьют по прямым мышцам живота, когда нам нужно сначала восстановить глубокие — ТВА + синхронизацию с тазовым дном.</p>
+        </div>
+        <div class="fact">
+          <h4>3) Плохие маркеры техники</h4>
+          <p class="muted">Если вы видите «домик», распахнутые рёбра, задерживаете дыхание — это сигнал «стоп». Сначала — низкое давление и контроль дыхания, потом — прогрессии.</p>
+        </div>
+      </div>
+      <div class="chips" style="margin-top:10px">
+        <span class="chip" data-cta="faq_coning">Что такое «домик»?</span>
+        <span class="chip" data-cta="faq_when_plank">Когда можно планку?</span>
+        <span class="chip" data-cta="faq_postpartum_timing">Когда начинать после родов?</span>
+      </div>
+    </section>
+
+    <!-- 3 УПРАЖНЕНИЯ С ПОДРОБНОЙ ТЕХНИКОЙ -->
+    <section id="ex">
+      <h2 class="title">3 упражнения, с которых безопасно начать</h2>
+      <div class="ex-grid">
+        <!-- 1 -->
+        <article class="ex">
+          <div class="head">
+            <strong>Диафрагмальное дыхание лёжа</strong>
+            <span class="tag">уровень 0–2</span>
+          </div>
+          <ul>
+            <li>Лёжа, колени согнуты. Ладони на боках рёбер.</li>
+            <li><b>Вдох 3с</b> — рёбра мягко расходятся в стороны/назад.</li>
+            <li><b>Выдох 3–4с</b> — нежно подтяните низ живота (ТВА) и тазовое дно, без «домика».</li>
+            <li>Пауза 1с — полное расслабление перед следующим циклом.</li>
+          </ul>
+          <div class="dos">
+            <div class="good"><b>Так:</b> рёбра «мягкие», живот не выталкивает, шея расслаблена.</div>
+            <div class="bad"><b>Не так:</b> задержка дыхания, напрягаете шею, видимый «домик».</div>
+          </div>
+          <div class="actions" style="margin-top:6px">
+            <button class="btn secondary" data-cta="ex1_video">Короткое видео</button>
+            <button class="btn" data-cta="ex1_pdf">Включить в PDF-план</button>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="ex">
+          <div class="head">
+            <strong>Слайд пяткой</strong>
+            <span class="tag">уровень 0–1</span>
+          </div>
+          <ul>
+            <li>Исходное — как в дыхании. На <b>выдохе</b> включите ТВА/ТД.</li>
+            <li>Медленно проведите одной пяткой по полу вперёд и верните.</li>
+            <li>Таз стабилен, поясница тяжёлая к коврику.</li>
+          </ul>
+          <div class="dos">
+            <div class="good"><b>Так:</b> амплитуда короткая, дыхание слышимое, рёбра не «раскрываются».</div>
+            <div class="bad"><b>Не так:</b> выгибаете поясницу, держите воздух, торопитесь.</div>
+          </div>
+          <div class="actions" style="margin-top:6px">
+            <button class="btn secondary" data-cta="ex2_video">Короткое видео</button>
+            <button class="btn" data-cta="ex2_pdf">Включить в PDF-план</button>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="ex">
+          <div class="head">
+            <strong>Ягодичный мост</strong>
+            <span class="tag">уровень 0–2</span>
+          </div>
+          <ul>
+            <li>Стопы под коленями. <b>Выдох</b> — мягко включить ТВА/ТД, поднять таз до линии «бёдра-корпус».</li>
+            <li>Рёбра «мягкие», шея длинная, опора в пятки.</li>
+            <li>Опустить позвонок за позвонком на вдохе.</li>
+          </ul>
+          <div class="dos">
+            <div class="good"><b>Так:</b> таз ровно, колени не «гуляют», дыхание без задержек.</div>
+            <div class="bad"><b>Не так:</b> закидываете голову, выталкиваете живот, «мост» слишком высокий.</div>
+          </div>
+          <div class="actions" style="margin-top:6px">
+            <button class="btn secondary" data-cta="ex3_video">Короткое видео</button>
+            <button class="btn" data-cta="ex3_pdf">Включить в PDF-план</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <strong>Полный план на 4 недели</strong>
+        <p class="muted" style="margin:6px 0 10px">Прогрессии без «домика»: дыхание → контроль → сила. Получите PDF с объёмом, частотой и чек-листом «стоп-флагов».</p>
+        <button class="btn" data-cta="plan_pdf">Скачать полный план в PDF</button>
+      </div>
+    </section>
+
+    <!-- МИФЫ -->
     <section id="library">
-      <h2 class="title">Живая библиотека</h2>
-      <p class="muted">Короткие, честные статьи + практики. Всё кликабельно — по клику попросим e-mail, чтобы прислать материал.</p>
-
-      <div class="grid-3">
-        <article class="item" data-cta="art_pp_basics">
-          <h3>После родов: с чего начать без боли</h3>
-          <p class="muted">Дыхание, мягкая активация ТВА/ТД, почему «домик» — стоп-сигнал.</p>
-          <div class="meta"><span>10 мин</span><span>уровень 0</span></div>
+      <h2 class="title">Мифы и факты</h2>
+      <div class="myths">
+        <article class="myth" data-cta="myth_press">
+          <h4>Миф: «Чтобы убрать живот, нужно качать пресс»</h4>
+          <p class="muted">Факт: при диастазе сначала — ТВА+тазовое дно и дыхание. Скручивания могут усугубить «домик».</p>
         </article>
-
-        <article class="item" data-cta="art_pp_sex">
-          <h3>Секс после родов: комфорт и желание</h3>
-          <p class="muted">Сухость, швы, позы с низким давлением, смазки и разговор с партнёром.</p>
-          <div class="meta"><span>8 мин</span><span>уровень 0–1</span></div>
+        <article class="myth" data-cta="myth_plank">
+          <h4>Миф: «Планка всегда полезна»</h4>
+          <p class="muted">Факт: на раннем этапе — избыточное давление. Планки позже, с тестом на отсутствие «домика».</p>
         </article>
-
-        <article class="item" data-cta="art_meno_core">
-          <h3>Перименопауза/менопауза: энергию — назад</h3>
-          <p class="muted">Почему падает выносливость и как тренировать мягко; когда обсуждать ЗГТ.</p>
-          <div class="meta"><span>9 мин</span><span>уровень 0–1</span></div>
-        </article>
-
-        <article class="item" data-cta="art_meno_sex">
-          <h3>Секс в климаксе: удовольствие без боли</h3>
-          <p class="muted">Смазки/увлажнители, релаксация тазового дна, позиции, когда к врачу.</p>
-          <div class="meta"><span>7 мин</span><span>гайд</span></div>
-        </article>
-
-        <article class="item" data-cta="art_masturbation">
-          <h3>Мастурбация без чувства вины</h3>
-          <p class="muted">Безопасность, игрушки, как просить то, что хочется.</p>
-          <div class="meta"><span>6 мин</span><span>гайд</span></div>
-        </article>
-
-        <article class="item" data-cta="art_anal_safe">
-          <h3>Анальный секс безопасно: пошагово</h3>
-          <p class="muted">Подготовка, гигиена, расширение, смазки и сигналы «стоп».</p>
-          <div class="meta"><span>8 мин</span><span>гайд</span></div>
+        <article class="myth" data-cta="myth_time">
+          <h4>Миф: «Поздно начинать — прошло много времени после родов»</h4>
+          <p class="muted">Факт: начинать можно и через годы. Регулярность важнее возраста диастаза.</p>
         </article>
       </div>
-    </section>
-
-    <!-- metrics/export -->
-    <section id="metrics" class="card">
-      <h3 style="margin:0 0 6px">Статистика кликов (локально)</h3>
-      <p class="muted" style="margin:0 0 8px">Мы записываем события в вашем браузере (без внешних сервисов). Можно выгрузить CSV и проанализировать.</p>
-      <div class="actions">
-        <button class="btn secondary" id="btn-export">Скачать статистику (CSV)</button>
-        <button class="btn secondary" id="btn-reset">Сбросить локальные данные</button>
+      <div class="chips" style="margin-top:12px">
+        <span class="chip" data-cta="seek_postpartum">После родов: когда можно</span>
+        <span class="chip" data-cta="seek_menopause">Климакс: энергия и кор</span>
+        <span class="chip" data-cta="seek_sex">Интим без боли</span>
+        <span class="chip" data-cta="seek_leaks">Утечки при чихе</span>
       </div>
-      <div id="peek" class="small" style="margin-top:8px"></div>
     </section>
 
     <footer>
@@ -202,152 +273,72 @@
     </footer>
   </div>
 
-  <!-- unified email modal -->
+  <!-- UNIFIED EMAIL MODAL -->
   <div class="modal" id="modal">
     <div class="box">
       <h3 id="modal-title">Получить доступ</h3>
-      <p class="muted" id="modal-desc">Оставьте e-mail — пришлём ссылку на материал и «7-дневный Core Reset».</p>
+      <p class="muted" id="modal-desc">Оставьте e-mail — пришлём материал и «Плоский живот 7 дней».</p>
       <div class="field">
         <input type="email" id="email" placeholder="you@email.com" required>
         <button class="btn" id="send">Отправить</button>
       </div>
-      <div class="small" style="margin-top:6px">Нажимая «Отправить», вы соглашаетесь получать от нас письма. Без спама, можно отписаться одним кликом.</div>
-      <div id="ok" class="small" style="margin-top:8px;color:#16a34a;display:none">Спасибо! Ссылка придёт на почту. (Пока сохраняем локально.)</div>
+      <div id="ok" style="margin-top:8px;color:#16a34a;display:none;font-size:12px">Спасибо! Мы на связи.</div>
     </div>
   </div>
 
 <script>
-/* ====== КОНФИГ ====== */
-// Если подключишь Formspree/любой вебхук, впиши URL сюда — и форма начнёт отправляться туда POST-запросом.
-const FORM_ENDPOINT = ""; // напр. "https://formspree.io/f/xxxxxxx"
+/* ===== Настраиваем реальную отправку, если нужна ===== */
+const FORM_ENDPOINT = ""; // например: "https://formspree.io/f/xxxxx"
 
-/* ====== УТИЛИТЫ ====== */
-const $ = s => document.querySelector(s);
-const $$ = s => Array.from(document.querySelectorAll(s));
-const storage = {
-  get: (k, d) => JSON.parse(localStorage.getItem(k) || JSON.stringify(d)),
-  set: (k, v) => localStorage.setItem(k, JSON.stringify(v)),
-  del: k => localStorage.removeItem(k)
-};
-const EVENTS_KEY = "cr.events";   // массив событий
-const COUNTS_KEY = "cr.counts";   // агрегированные счётчики
-
-function track(name, extra={}){
-  // 1) событие в ленту
-  const events = storage.get(EVENTS_KEY, []);
-  events.push({t:new Date().toISOString(), name, ...extra});
-  storage.set(EVENTS_KEY, events);
-  // 2) счётчик
-  const counts = storage.get(COUNTS_KEY, {});
-  counts[name] = (counts[name]||0)+1;
-  storage.set(COUNTS_KEY, counts);
-  // мини-подсказка
-  const peek = $('#peek');
-  if(peek){
-    const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,6)
-      .map(([k,v])=>`${k}: ${v}`).join(' · ');
-    peek.textContent = top ? `Топ кликов: ${top}` : 'Счётчики пусты';
-  }
+/* ===== Утилиты и «тихая» метрика кликов ===== */
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const storage={get:(k,d)=>JSON.parse(localStorage.getItem(k)||JSON.stringify(d)),set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
+const EVENTS_KEY="cr.events", COUNTS_KEY="cr.counts";
+function track(name,extra={}){
+  const ev=storage.get(EVENTS_KEY,[]); ev.push({t:new Date().toISOString(),name,...extra}); storage.set(EVENTS_KEY,ev);
+  const c=storage.get(COUNTS_KEY,{}); c[name]=(c[name]||0)+1; storage.set(COUNTS_KEY,c);
 }
 
-function download(filename, text){
-  const blob = new Blob([text], {type:'text/csv;charset=utf-8;'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = filename; a.click();
-  URL.revokeObjectURL(url);
-}
-
-/* ====== МОДАЛКА ====== */
-const modal = $('#modal');
-let currentContext = null;
-
-function openModal(context, title, desc){
-  currentContext = context;
-  $('#modal-title').textContent = title || 'Получить доступ';
-  $('#modal-desc').textContent  = desc  || 'Оставьте e-mail — пришлём ссылку.';
-  modal.classList.add('open');
-}
-function closeModal(){ modal.classList.remove('open'); }
-
-modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
-$('#send').addEventListener('click', async ()=>{
-  const email = $('#email').value.trim();
-  if(!email){ alert('Введите e-mail'); return; }
-  // трекинг
-  track('lead_submit', {email, source: currentContext || 'unknown'});
-  // отправка (если указан эндпоинт)
+/* ===== Модалка e-mail ===== */
+const modal=$("#modal"); let currentContext=null;
+function openModal(ctx,title,desc){currentContext=ctx; $("#modal-title").textContent=title||"Получить доступ"; $("#modal-desc").textContent=desc||"Оставьте e-mail — пришлём ссылку."; modal.classList.add("open");}
+function closeModal(){modal.classList.remove("open")}
+modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
+$("#send").addEventListener("click",async()=>{
+  const email=$("#email").value.trim(); if(!email){alert("Введите e-mail");return;}
+  track("lead_submit",{email,source:currentContext||"unknown"});
   if(FORM_ENDPOINT){
-    try{
-      await fetch(FORM_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({email, source: currentContext})
-      });
-    }catch(e){}
+    try{ await fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,source:currentContext})}); }catch(e){}
   }
-  $('#ok').style.display='block';
-  setTimeout(closeModal, 1200);
+  $("#ok").style.display="block"; setTimeout(closeModal,1200);
 });
 
-/* ====== ПРИКРУЧИВАЕМ КЛИКИ ====== */
-// Клики по CTA/карточкам → модалка + метрика
-$$('[data-cta]').forEach(el=>{
-  el.addEventListener('click', ()=>{
-    const id = el.getAttribute('data-cta');
-    track(id);
-    openModal(id, 'Получить доступ', 'Оставьте e-mail — пришлём материал и «7-дневный Core Reset».');
+/* ===== Кликабельность всего контента ===== */
+document.getElementById("y").textContent=new Date().getFullYear();
+
+$$("[data-cta]").forEach(el=>{
+  el.addEventListener("click",()=>{
+    const id=el.getAttribute("data-cta"); track(id);
+    openModal(id,"Получить материал","Оставьте e-mail — пришлём полную версию и PDF-план.");
   });
 });
 
-// Хуки (миникарточки) сделаем тоже кликабельными по всему блоку
-$$('.mini').forEach(el=>{
-  el.addEventListener('click', ()=>{
-    const id = el.getAttribute('data-cta') || 'hook_click';
-    track(id);
-    openModal(id, 'Открыть материал', 'Оставьте e-mail — пришлём полную карточку и короткое видео.');
+// «Часто ищут» и мифы кликабельны по умолчанию (через data-cta)
+$$(".myth,.chip,.mini,.item").forEach(el=>{
+  el.addEventListener("click",()=>{
+    const id=el.getAttribute("data-cta")||"content_click"; track(id);
+    openModal(id,"Открыть материал","Оставьте e-mail — пришлём выбранный материал на почту.");
   });
 });
 
-// Статьи: кликабельные карточки
-$$('#library .item').forEach(el=>{
-  el.addEventListener('click', ()=>{
-    const id = el.getAttribute('data-cta') || 'article_click';
-    track(id);
-    openModal(id, 'Статья по e-mail', 'Оставьте e-mail — пришлём полную статью и практику в PDF.');
-  });
-});
-
-// «Случайная 10-минутка» просто показывает алерт (и трекает)
+// Демонстрация «случайной 10-минутки»
 $$('[data-cta="hero_random"]').forEach(el=>{
-  el.addEventListener('click', ()=>{
-    track('hero_random');
-    alert('Пример 10-минутки: Дыхание 8× → Мост 10× → Ракушка 12×/12 → Dead bug 6×/6 → Растяжка 30с');
-    openModal('hero_random', 'Получить 10-минутки на почту', 'Оставьте e-mail — пришлём 3 варианта на неделю.');
+  el.addEventListener("click",()=>{
+    track("hero_random");
+    alert("10-минутка:\n• Дыхание 8×\n• Слайд пяткой 8×/8\n• Мост 10×\n• Dead bug (упр.) 6×/6\n• Растяжка 30с");
+    openModal("hero_random","Подборка 10-минуток","Оставьте e-mail — пришлём 3 варианта на неделю.");
   });
 });
-
-/* ====== ЭКСПОРТ/СБРОС СТАТЫ ====== */
-$('#btn-export').addEventListener('click', ()=>{
-  const events = storage.get(EVENTS_KEY, []);
-  const counts = storage.get(COUNTS_KEY, {});
-  let csv = 'timestamp,event,extra\n';
-  events.forEach(e=>{
-    const extra = {...e}; delete extra.t; delete extra.name;
-    csv += `${e.t},${e.name},"${JSON.stringify(extra).replace(/"/g,'""')}"\n`;
-  });
-  csv += '\nTOTALS\n';
-  Object.entries(counts).forEach(([k,v])=>{ csv += `${k},${v}\n`; });
-  download('corerestore_metrics.csv', csv);
-});
-
-$('#btn-reset').addEventListener('click', ()=>{
-  if(confirm('Стереть локальную статистику?')){
-    storage.del(EVENTS_KEY); storage.del(COUNTS_KEY);
-    $('#peek').textContent = 'Счётчики пусты';
-  }
-});
-
-/* ====== ПРОЧЕЕ ====== */
-document.getElementById('y').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
