@@ -24,6 +24,10 @@
   .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px}
   .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:#334155;background:#fff}
   .hook{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 0}
+  /* hero figure */
+  .hero-figure{margin:0}
+  .hero-figure img{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);background:#fff}
+  .hero-figure figcaption{margin-top:6px}
   /* sections */
   section{margin:26px 0}.title{font-size:26px;margin:0 0 8px}.muted{color:#475569}
   .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
@@ -51,15 +55,14 @@
   .myth h4{margin:0 0 6px;font-size:18px}
   /* chips */
   .chips{display:flex;gap:8px;flex-wrap:wrap}.chip{padding:6px 10px;border-radius:999px;border:1px dashed var(--line);background:#fff;font-size:13px;cursor:pointer}
-  /* thumbs in hooks */
+  /* HOOK CARDS — text only */
   .hookgrid{display:grid;gap:12px;grid-template-columns:repeat(3,1fr)}
   @media(max-width:980px){.hookgrid{grid-template-columns:1fr}}
-  .mini{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;grid-template-columns:1fr 96px;gap:12px;align-items:center;cursor:pointer}
-  .mini h4{margin:0 0 6px;font-size:18px}.mini p{margin:0;color:#334155}
-  .thumb{width:96px;height:72px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#eef2ff}
-  .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:.25s transform}
-  .mini:hover .thumb img{transform:scale(1.04)}
-  /* modal */
+  .mini{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;cursor:pointer;display:grid;grid-template-columns:1fr;gap:6px}
+  .mini h4{margin:0 0 6px;font-size:18px}
+  .mini p{margin:0;color:#334155}
+  .mini:hover{box-shadow:0 1px 0 0 var(--line),0 4px 14px rgba(16,24,40,.06);transform:translateY(-1px);transition:.15s ease}
+  /* modal & footer */
   .modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.45)}
   .modal.open{display:grid}
   .box{background:#fff;border:1px solid var(--line);border-radius:16px;max-width:520px;width:92%;padding:18px}
@@ -96,60 +99,47 @@
         <p class="lead">Короткие практики, понятная техника и дыхание: активируем поперечную мышцу живота (ТВА) и тазовое дно, без скручиваний и «героизма». Начните сегодня — 10 минут.</p>
         <div class="actions">
           <button class="btn" data-cta="hero_pdf">Бесплатный старт «Плоский живот 7 дней»</button>
-          <button class="btn secondary" data-cta="hero_random">Случайная 10-минутка</button>
+          <!-- удалено: «Случайная 10-минутка» -->
         </div>
       </div>
+
+      <!-- Картинка Норма vs Диастаз -->
       <div class="card">
         <div style="font-weight:700;margin-bottom:6px">Как выглядит диастаз</div>
-        <svg viewBox="0 0 420 200" style="width:100%">
-          <rect x="10" y="10" width="180" height="160" rx="16" fill="#fff" stroke="#e5e7eb"/>
-          <rect x="230" y="10" width="180" height="160" rx="16" fill="#fff" stroke="#e5e7eb"/>
-          <rect x="50" y="30" width="30" height="120" fill="#8cb6ff"/>
-          <rect x="110" y="30" width="30" height="120" fill="#8cb6ff"/>
-          <rect x="85" y="30" width="20" height="120" fill="#fbbf24" opacity=".2"/>
-          <text x="100" y="175" text-anchor="middle" fill="#334155" font-size="14">Норма</text>
-          <rect x="270" y="30" width="30" height="120" fill="#8cb6ff"/>
-          <rect x="330" y="30" width="30" height="120" fill="#8cb6ff"/>
-          <rect x="305" y="30" width="30" height="120" fill="#fbbf24"/>
-          <text x="320" y="175" text-anchor="middle" fill="#334155" font-size="14">Диастаз (шире зазор)</text>
-        </svg>
+        <figure class="hero-figure" data-cta="hero_diastasis_image">
+          <img src="./img/diastasis-labeled.png"
+               alt="Сравнение: норма и диастаз. Подписи: мышцы брюшного пресса, пупок, белая линия живота."
+               loading="eager"/>
+          <figcaption class="small">Слева — норма (узкий зазор), справа — диастаз (расширенная белая линия).</figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- HOOK CARDS (правильная техника / ошибки / PDF) -->
+    <!-- HOOK CARDS — текстовые -->
     <section id="hooks" class="hook">
       <div class="hookgrid">
-        <article class="mini" data-cta="hook_technique">
-          <div>
-            <h4>Правильная техника</h4>
-            <p>Как подтягивать низ живота и тазовое дно на выдохе, без «домика».</p>
-          </div>
-          <div class="thumb"><img src="./img/technique.jpg" alt="Правильная техника"></div>
+        <article class="mini" data-cta="hook_technique" role="button" tabindex="0" aria-label="Правильная техника">
+          <h4>Правильная техника</h4>
+          <p>Как подтягивать низ живота и тазовое дно на выдохе, без «домика».</p>
         </article>
-        <article class="mini" data-cta="hook_mistakes">
-          <div>
-            <h4>Типичные ошибки</h4>
-            <p>«Домик», распахнутые рёбра, задержка дыхания — «так/не так».</p>
-          </div>
-          <div class="thumb"><img src="./img/mistakes.jpg" alt="Ошибки"></div>
+        <article class="mini" data-cta="hook_mistakes" role="button" tabindex="0" aria-label="Типичные ошибки">
+          <h4>Типичные ошибки</h4>
+          <p>«Домик», распахнутые рёбра, задержка дыхания — «так/не так».</p>
         </article>
-        <article class="mini" data-cta="hook_pdf">
-          <div>
-            <h4>Скачать PDF</h4>
-            <p>Полный план на 4 недели + чек-лист «стоп-флаги».</p>
-          </div>
-          <div class="thumb"><img src="./img/pdf.jpg" alt="PDF план"></div>
+        <article class="mini" data-cta="hook_pdf" role="button" tabindex="0" aria-label="Скачать PDF план">
+          <h4>Скачать PDF</h4>
+          <p>Полный план на 4 недели + чек-лист «стоп-флаги».</p>
         </article>
       </div>
     </section>
 
-    <!-- FACTS: ПОЧЕМУ НЕ «КАЧАТЬ ПРЕСС» -->
+    <!-- FACTS -->
     <section id="facts">
       <h2 class="title">Почему «качать пресс» при диастазе — плохая идея</h2>
       <div class="facts">
         <div class="fact">
           <h4>1) Скручивания ↑ давление</h4>
-          <p class="muted">Классические скручивания/«складочки» повышают внутрибрюшное давление и вызывают выпячивание («домик»). Это растягивает белую линию и может <em>усугубить</em> зазор.</p>
+          <p class="muted">Классические скручивания/«складочки» повышают внутрибрюшное давление и вызывают выпячивание («домик»). Это растягивает белую линию и может усугубить зазор.</p>
         </div>
         <div class="fact">
           <h4>2) Неправильная мышечная «иерархия»</h4>
@@ -167,16 +157,12 @@
       </div>
     </section>
 
-    <!-- 3 УПРАЖНЕНИЯ С ПОДРОБНОЙ ТЕХНИКОЙ -->
+    <!-- 3 УПРАЖНЕНИЯ -->
     <section id="ex">
       <h2 class="title">3 упражнения, с которых безопасно начать</h2>
       <div class="ex-grid">
-        <!-- 1 -->
         <article class="ex">
-          <div class="head">
-            <strong>Диафрагмальное дыхание лёжа</strong>
-            <span class="tag">уровень 0–2</span>
-          </div>
+          <div class="head"><strong>Диафрагмальное дыхание лёжа</strong><span class="tag">уровень 0–2</span></div>
           <ul>
             <li>Лёжа, колени согнуты. Ладони на боках рёбер.</li>
             <li><b>Вдох 3с</b> — рёбра мягко расходятся в стороны/назад.</li>
@@ -193,12 +179,8 @@
           </div>
         </article>
 
-        <!-- 2 -->
         <article class="ex">
-          <div class="head">
-            <strong>Слайд пяткой</strong>
-            <span class="tag">уровень 0–1</span>
-          </div>
+          <div class="head"><strong>Слайд пяткой</strong><span class="tag">уровень 0–1</span></div>
           <ul>
             <li>Исходное — как в дыхании. На <b>выдохе</b> включите ТВА/ТД.</li>
             <li>Медленно проведите одной пяткой по полу вперёд и верните.</li>
@@ -214,12 +196,8 @@
           </div>
         </article>
 
-        <!-- 3 -->
         <article class="ex">
-          <div class="head">
-            <strong>Ягодичный мост</strong>
-            <span class="tag">уровень 0–2</span>
-          </div>
+          <div class="head"><strong>Ягодичный мост</strong><span class="tag">уровень 0–2</span></div>
           <ul>
             <li>Стопы под коленями. <b>Выдох</b> — мягко включить ТВА/ТД, поднять таз до линии «бёдра-корпус».</li>
             <li>Рёбра «мягкие», шея длинная, опора в пятки.</li>
@@ -229,7 +207,7 @@
             <div class="good"><b>Так:</b> таз ровно, колени не «гуляют», дыхание без задержек.</div>
             <div class="bad"><b>Не так:</b> закидываете голову, выталкиваете живот, «мост» слишком высокий.</div>
           </div>
-          <div class="actions" style="margin-top:6px">
+          <div class="actions" style="margin-top:6px)">
             <button class="btn secondary" data-cta="ex3_video">Короткое видео</button>
             <button class="btn" data-cta="ex3_pdf">Включить в PDF-план</button>
           </div>
@@ -287,19 +265,17 @@
   </div>
 
 <script>
-/* ===== Настраиваем реальную отправку, если нужна ===== */
-const FORM_ENDPOINT = ""; // например: "https://formspree.io/f/xxxxx"
+/* ===== Реальная отправка (по желанию) ===== */
+const FORM_ENDPOINT = ""; // напр. "https://formspree.io/f/xxxxx"
 
-/* ===== Утилиты и «тихая» метрика кликов ===== */
+/* ===== Тихая метрика ===== */
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
 const storage={get:(k,d)=>JSON.parse(localStorage.getItem(k)||JSON.stringify(d)),set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
 const EVENTS_KEY="cr.events", COUNTS_KEY="cr.counts";
-function track(name,extra={}){
-  const ev=storage.get(EVENTS_KEY,[]); ev.push({t:new Date().toISOString(),name,...extra}); storage.set(EVENTS_KEY,ev);
-  const c=storage.get(COUNTS_KEY,{}); c[name]=(c[name]||0)+1; storage.set(COUNTS_KEY,c);
-}
+function track(name,extra={}){ const ev=storage.get(EVENTS_KEY,[]); ev.push({t:new Date().toISOString(),name,...extra}); storage.set(EVENTS_KEY,ev);
+  const c=storage.get(COUNTS_KEY,{}); c[name]=(c[name]||0)+1; storage.set(COUNTS_KEY,c); }
 
-/* ===== Модалка e-mail ===== */
+/* ===== Модалка ===== */
 const modal=$("#modal"); let currentContext=null;
 function openModal(ctx,title,desc){currentContext=ctx; $("#modal-title").textContent=title||"Получить доступ"; $("#modal-desc").textContent=desc||"Оставьте e-mail — пришлём ссылку."; modal.classList.add("open");}
 function closeModal(){modal.classList.remove("open")}
@@ -307,38 +283,26 @@ modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
 $("#send").addEventListener("click",async()=>{
   const email=$("#email").value.trim(); if(!email){alert("Введите e-mail");return;}
   track("lead_submit",{email,source:currentContext||"unknown"});
-  if(FORM_ENDPOINT){
-    try{ await fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,source:currentContext})}); }catch(e){}
-  }
+  if(FORM_ENDPOINT){ try{ await fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,source:currentContext})}); }catch(e){} }
   $("#ok").style.display="block"; setTimeout(closeModal,1200);
 });
 
-/* ===== Кликабельность всего контента ===== */
+/* ===== Кликабельность ===== */
 document.getElementById("y").textContent=new Date().getFullYear();
-
 $$("[data-cta]").forEach(el=>{
   el.addEventListener("click",()=>{
     const id=el.getAttribute("data-cta"); track(id);
     openModal(id,"Получить материал","Оставьте e-mail — пришлём полную версию и PDF-план.");
   });
 });
-
-// «Часто ищут» и мифы кликабельны по умолчанию (через data-cta)
-$$(".myth,.chip,.mini,.item").forEach(el=>{
+$$(".myth,.chip,.mini,.item,.hero-figure").forEach(el=>{
   el.addEventListener("click",()=>{
     const id=el.getAttribute("data-cta")||"content_click"; track(id);
     openModal(id,"Открыть материал","Оставьте e-mail — пришлём выбранный материал на почту.");
   });
 });
 
-// Демонстрация «случайной 10-минутки»
-$$('[data-cta="hero_random"]').forEach(el=>{
-  el.addEventListener("click",()=>{
-    track("hero_random");
-    alert("10-минутка:\n• Дыхание 8×\n• Слайд пяткой 8×/8\n• Мост 10×\n• Dead bug (упр.) 6×/6\n• Растяжка 30с");
-    openModal("hero_random","Подборка 10-минуток","Оставьте e-mail — пришлём 3 варианта на неделю.");
-  });
-});
+/* удалено: обработчик hero_random */
 </script>
 </body>
 </html>
