@@ -3,62 +3,351 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>CoreRestore — мягкое восстановление: диастаз, тазовое дно, статьи и PDF</title>
-<meta name="description" content="Короткие безопасные практики, честные статьи и мини-курсы. Диастаз, тазовое дно, послеродовое, климакс, секс и мастурбация.">
+<title>CoreRestore — мягкое восстановление: диастаз, тазовое дно, статьи</title>
+<meta name="description" content="Короткие безопасные практики и честные статьи: диастаз, тазовое дно, послеродовое восстановление, климакс, секс и мастурбация.">
 <style>
   :root{
-    --bg:#f6f7fb;--paper:#ffffff;--ink:#0f172a;--muted:#475569;--accent:#3b82f6;--line:#e5e7eb;--ok:#16a34a
+    --bg:#f6f7fb;--paper:#ffffff;--ink:#0f172a;--muted:#475569;--accent:#3b82f6;--line:#e5e7eb
   }
-  *{box-sizing:border-box}
+  *{box-sizing:border-box} img{max-width:100%;display:block}
   body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
-  a{color:var(--accent);text-decoration:none}
-  img{display:block;max-width:100%}
-
+  a{text-decoration:none;color:var(--accent)}
   .wrap{max-width:1120px;margin:0 auto;padding:20px}
+  /* header */
   .top{position:sticky;top:0;z-index:50;background:rgba(246,247,251,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 20px}
+  .top .row{display:flex;align-items:center;justify-content:space-between;padding:10px 20px}
   .brand{display:flex;align-items:center;gap:10px}
-  .dot{width:10px;height:10px;border-radius:50%;background:var(--ok)}
-  .nav a{color:var(--muted);margin-left:14px;font-size:14px}
-
-  .btn{border:1px solid #1d4ed8;background:linear-gradient(180deg,#7aa2ff,#3b82f6);color:#fff;padding:12px 16px;border-radius:12px;font-weight:700;cursor:pointer}
-  .btn.secondary{background:#eef2ff;border-color:#c7d2fe;color:#1f2a5a}
-
-  /* HERO */
-  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:24px 0}
+  .dot{width:12px;height:12px;border-radius:50%;background:#16a34a}
+  .nav a{color:var(--muted);margin-left:16px;font-size:14px}
+  .btn{border:1px solid #1d4ed8;background:linear-gradient(180deg,#7aa2ff,#3b82f6);color:#fff;padding:11px 14px;border-radius:12px;font-weight:700;cursor:pointer}
+  .btn.secondary{background:#eef2ff;color:#1f2a5a;border-color:#c7d2fe}
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;padding:22px 0}
   @media(max-width:980px){.hero{grid-template-columns:1fr}}
-  h1{font-size:42px;line-height:1.12;margin:0 0 10px}
-  .lead{font-size:18px;color:#334155;margin:0 0 16px}
+  h1{margin:0 0 10px;font-size:42px;line-height:1.14}
+  .lead{margin:0 0 12px;color:#334155}
   .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px}
-  .tag{color:#475569}
-
-  /* HOOK 3 CARDS */
-  .hookgrid{display:grid;gap:12px;grid-template-columns:repeat(3,1fr);margin:10px 0}
+  /* hook */
+  .hook{margin:8px 0}
+  .hookgrid{display:grid;gap:12px;grid-template-columns:repeat(3,1fr)}
   @media(max-width:980px){.hookgrid{grid-template-columns:1fr}}
   .mini{
-    background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;
-    display:grid;grid-template-columns:1fr 96px;gap:12px;align-items:center
+    background:#fff;border:1px solid var(--line);border-radius:16px;
+    padding:14px;display:grid;grid-template-columns:1fr 96px;gap:12px;align-items:center;cursor:pointer
   }
-  .mini h4{margin:0 0 4px;font-size:18px}
+  .mini h4{margin:0 0 6px;font-size:18px}
   .mini p{margin:0;color:#334155}
-  .thumb{width:96px;height:72px;border-radius:10px;border:1px solid var(--line);overflow:hidden;background:#f1f5ff}
-  .thumb img{width:100%;height:100%;object-fit:cover}
-  .cta-btn{grid-column:2/span 1;align-self:stretch;display:flex;align-items:center;justify-content:center}
-  .mini .icon{font-size:18px}
-
-  /* ARTICLES */
+  .thumb{width:96px;height:72px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#eef2ff}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:.25s transform}
+  .mini:hover .thumb img{transform:scale(1.04)}
+  /* sections */
   section{margin:26px 0}
   .title{font-size:26px;margin:0 0 8px}
   .muted{color:#475569}
-  .grid3{display:grid;gap:12px;grid-template-columns:repeat(3,1fr)}
-  @media(max-width:980px){.grid3{grid-template-columns:1fr}}
-  .item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
-  .item h3{margin:0 0 4px;font-size:18px}
-  .meta{display:flex;gap:8px;flex-wrap:wrap;color:#475569;font-size:12px}
-  .linklike{cursor:pointer}
-  .linklike:hover{opacity:.9}
-
-  /* MODAL */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  @media(max-width:980px){.grid-3{grid-template-columns:1fr}}
+  .item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer}
+  .item h3{margin:0 0 6px;font-size:18px}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;color:#475569;font-size:12px}
+  /* footer */
+  footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18px 0;margin-top:28px}
+  /* modal */
   .modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.45)}
   .modal.open{display:grid}
-  .box{background:#fff;border:1px solid var(--line);border-
+  .box{background:#fff;border:1px solid var(--line);border-radius:16px;max-width:520px;width:92%;padding:18px}
+  .field{display:flex;gap:8px;margin-top:8px}
+  input[type=email]{flex:1;padding:12px;border:1px solid #c7d2fe;border-radius:10px}
+  .small{font-size:12px;color:#475569}
+  .actions{display:flex;gap:10px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+  <!-- header -->
+  <div class="top">
+    <div class="row wrap">
+      <div class="brand"><span class="dot"></span><strong>CoreRestore</strong></div>
+      <div class="nav">
+        <a href="#hooks">Главное</a>
+        <a href="#library">Статьи</a>
+        <a href="#metrics">Статистика</a>
+      </div>
+      <div class="actions">
+        <button class="btn" data-cta="header_test">Самотест 1 мин</button>
+        <button class="btn secondary" data-cta="header_join">Получить доступ</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- hero -->
+    <section class="hero">
+      <div>
+        <h1>Мягкое восстановление без героизма</h1>
+        <p class="lead">Короткие безопасные практики + честные, понятные статьи. Внимание к дыханию, поперечной мышце живота (ТВА) и тазовому дну. Начните с того уровня, где вы есть — и вернитесь завтра ещё на 10 минут.</p>
+        <div class="actions">
+          <button class="btn" data-cta="hero_pdf">Скачать «7-дневный Core Reset»</button>
+          <button class="btn secondary" data-cta="hero_random">Случайная 10-минутка</button>
+        </div>
+        <div class="small" style="margin-top:6px">PT-информировано • без рекламы и шейминга • образовательные материалы</div>
+      </div>
+      <div class="card">
+        <div style="font-weight:700;margin-bottom:6px">Как выглядит диастаз</div>
+        <svg viewBox="0 0 420 200" style="width:100%">
+          <rect x="10" y="10" width="180" height="160" rx="16" fill="#fff" stroke="#e5e7eb"/>
+          <rect x="230" y="10" width="180" height="160" rx="16" fill="#fff" stroke="#e5e7eb"/>
+          <rect x="50" y="30" width="30" height="120" fill="#8cb6ff"/>
+          <rect x="110" y="30" width="30" height="120" fill="#8cb6ff"/>
+          <rect x="85" y="30" width="20" height="120" fill="#fbbf24" opacity=".2"/>
+          <text x="100" y="175" text-anchor="middle" fill="#334155" font-size="14">Норма</text>
+          <rect x="270" y="30" width="30" height="120" fill="#8cb6ff"/>
+          <rect x="330" y="30" width="30" height="120" fill="#8cb6ff"/>
+          <rect x="305" y="30" width="30" height="120" fill="#fbbf24"/>
+          <text x="320" y="175" text-anchor="middle" fill="#334155" font-size="14">Диастаз (шире зазор)</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- hooks -->
+    <section id="hooks" class="hook">
+      <div class="hookgrid">
+        <article class="mini" data-cta="hook_technique">
+          <div>
+            <h4>Правильная техника</h4>
+            <p>Куда смотреть и что чувствовать — по шагам.</p>
+          </div>
+          <div class="thumb">
+            <img src="./img/technique.jpg" alt="Правильная техника (превью)">
+          </div>
+        </article>
+
+        <article class="mini" data-cta="hook_mistakes">
+          <div>
+            <h4>Ошибки</h4>
+            <p>Избегаем «домика», раскрытых рёбер и задержки дыхания.</p>
+          </div>
+          <div class="thumb">
+            <img src="./img/mistakes.jpg" alt="Ошибки (превью)">
+          </div>
+        </article>
+
+        <article class="mini" data-cta="hook_pdf">
+          <div>
+            <h4>Бесплатно</h4>
+            <p>Заберите «7-дневный Core Reset» и начните сегодня.</p>
+          </div>
+          <div class="thumb">
+            <img src="./img/pdf.jpg" alt="PDF (превью)">
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- library -->
+    <section id="library">
+      <h2 class="title">Живая библиотека</h2>
+      <p class="muted">Короткие, честные статьи + практики. Всё кликабельно — по клику попросим e-mail, чтобы прислать материал.</p>
+
+      <div class="grid-3">
+        <article class="item" data-cta="art_pp_basics">
+          <h3>После родов: с чего начать без боли</h3>
+          <p class="muted">Дыхание, мягкая активация ТВА/ТД, почему «домик» — стоп-сигнал.</p>
+          <div class="meta"><span>10 мин</span><span>уровень 0</span></div>
+        </article>
+
+        <article class="item" data-cta="art_pp_sex">
+          <h3>Секс после родов: комфорт и желание</h3>
+          <p class="muted">Сухость, швы, позы с низким давлением, смазки и разговор с партнёром.</p>
+          <div class="meta"><span>8 мин</span><span>уровень 0–1</span></div>
+        </article>
+
+        <article class="item" data-cta="art_meno_core">
+          <h3>Перименопауза/менопауза: энергию — назад</h3>
+          <p class="muted">Почему падает выносливость и как тренировать мягко; когда обсуждать ЗГТ.</p>
+          <div class="meta"><span>9 мин</span><span>уровень 0–1</span></div>
+        </article>
+
+        <article class="item" data-cta="art_meno_sex">
+          <h3>Секс в климаксе: удовольствие без боли</h3>
+          <p class="muted">Смазки/увлажнители, релаксация тазового дна, позиции, когда к врачу.</p>
+          <div class="meta"><span>7 мин</span><span>гайд</span></div>
+        </article>
+
+        <article class="item" data-cta="art_masturbation">
+          <h3>Мастурбация без чувства вины</h3>
+          <p class="muted">Безопасность, игрушки, как просить то, что хочется.</p>
+          <div class="meta"><span>6 мин</span><span>гайд</span></div>
+        </article>
+
+        <article class="item" data-cta="art_anal_safe">
+          <h3>Анальный секс безопасно: пошагово</h3>
+          <p class="muted">Подготовка, гигиена, расширение, смазки и сигналы «стоп».</p>
+          <div class="meta"><span>8 мин</span><span>гайд</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- metrics/export -->
+    <section id="metrics" class="card">
+      <h3 style="margin:0 0 6px">Статистика кликов (локально)</h3>
+      <p class="muted" style="margin:0 0 8px">Мы записываем события в вашем браузере (без внешних сервисов). Можно выгрузить CSV и проанализировать.</p>
+      <div class="actions">
+        <button class="btn secondary" id="btn-export">Скачать статистику (CSV)</button>
+        <button class="btn secondary" id="btn-reset">Сбросить локальные данные</button>
+      </div>
+      <div id="peek" class="small" style="margin-top:8px"></div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> CoreRestore. Образовательные материалы, не медицинская консультация. При боли/симптомах — к врачу.
+    </footer>
+  </div>
+
+  <!-- unified email modal -->
+  <div class="modal" id="modal">
+    <div class="box">
+      <h3 id="modal-title">Получить доступ</h3>
+      <p class="muted" id="modal-desc">Оставьте e-mail — пришлём ссылку на материал и «7-дневный Core Reset».</p>
+      <div class="field">
+        <input type="email" id="email" placeholder="you@email.com" required>
+        <button class="btn" id="send">Отправить</button>
+      </div>
+      <div class="small" style="margin-top:6px">Нажимая «Отправить», вы соглашаетесь получать от нас письма. Без спама, можно отписаться одним кликом.</div>
+      <div id="ok" class="small" style="margin-top:8px;color:#16a34a;display:none">Спасибо! Ссылка придёт на почту. (Пока сохраняем локально.)</div>
+    </div>
+  </div>
+
+<script>
+/* ====== КОНФИГ ====== */
+// Если подключишь Formspree/любой вебхук, впиши URL сюда — и форма начнёт отправляться туда POST-запросом.
+const FORM_ENDPOINT = ""; // напр. "https://formspree.io/f/xxxxxxx"
+
+/* ====== УТИЛИТЫ ====== */
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const storage = {
+  get: (k, d) => JSON.parse(localStorage.getItem(k) || JSON.stringify(d)),
+  set: (k, v) => localStorage.setItem(k, JSON.stringify(v)),
+  del: k => localStorage.removeItem(k)
+};
+const EVENTS_KEY = "cr.events";   // массив событий
+const COUNTS_KEY = "cr.counts";   // агрегированные счётчики
+
+function track(name, extra={}){
+  // 1) событие в ленту
+  const events = storage.get(EVENTS_KEY, []);
+  events.push({t:new Date().toISOString(), name, ...extra});
+  storage.set(EVENTS_KEY, events);
+  // 2) счётчик
+  const counts = storage.get(COUNTS_KEY, {});
+  counts[name] = (counts[name]||0)+1;
+  storage.set(COUNTS_KEY, counts);
+  // мини-подсказка
+  const peek = $('#peek');
+  if(peek){
+    const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,6)
+      .map(([k,v])=>`${k}: ${v}`).join(' · ');
+    peek.textContent = top ? `Топ кликов: ${top}` : 'Счётчики пусты';
+  }
+}
+
+function download(filename, text){
+  const blob = new Blob([text], {type:'text/csv;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+}
+
+/* ====== МОДАЛКА ====== */
+const modal = $('#modal');
+let currentContext = null;
+
+function openModal(context, title, desc){
+  currentContext = context;
+  $('#modal-title').textContent = title || 'Получить доступ';
+  $('#modal-desc').textContent  = desc  || 'Оставьте e-mail — пришлём ссылку.';
+  modal.classList.add('open');
+}
+function closeModal(){ modal.classList.remove('open'); }
+
+modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+$('#send').addEventListener('click', async ()=>{
+  const email = $('#email').value.trim();
+  if(!email){ alert('Введите e-mail'); return; }
+  // трекинг
+  track('lead_submit', {email, source: currentContext || 'unknown'});
+  // отправка (если указан эндпоинт)
+  if(FORM_ENDPOINT){
+    try{
+      await fetch(FORM_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({email, source: currentContext})
+      });
+    }catch(e){}
+  }
+  $('#ok').style.display='block';
+  setTimeout(closeModal, 1200);
+});
+
+/* ====== ПРИКРУЧИВАЕМ КЛИКИ ====== */
+// Клики по CTA/карточкам → модалка + метрика
+$$('[data-cta]').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    const id = el.getAttribute('data-cta');
+    track(id);
+    openModal(id, 'Получить доступ', 'Оставьте e-mail — пришлём материал и «7-дневный Core Reset».');
+  });
+});
+
+// Хуки (миникарточки) сделаем тоже кликабельными по всему блоку
+$$('.mini').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    const id = el.getAttribute('data-cta') || 'hook_click';
+    track(id);
+    openModal(id, 'Открыть материал', 'Оставьте e-mail — пришлём полную карточку и короткое видео.');
+  });
+});
+
+// Статьи: кликабельные карточки
+$$('#library .item').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    const id = el.getAttribute('data-cta') || 'article_click';
+    track(id);
+    openModal(id, 'Статья по e-mail', 'Оставьте e-mail — пришлём полную статью и практику в PDF.');
+  });
+});
+
+// «Случайная 10-минутка» просто показывает алерт (и трекает)
+$$('[data-cta="hero_random"]').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    track('hero_random');
+    alert('Пример 10-минутки: Дыхание 8× → Мост 10× → Ракушка 12×/12 → Dead bug 6×/6 → Растяжка 30с');
+    openModal('hero_random', 'Получить 10-минутки на почту', 'Оставьте e-mail — пришлём 3 варианта на неделю.');
+  });
+});
+
+/* ====== ЭКСПОРТ/СБРОС СТАТЫ ====== */
+$('#btn-export').addEventListener('click', ()=>{
+  const events = storage.get(EVENTS_KEY, []);
+  const counts = storage.get(COUNTS_KEY, {});
+  let csv = 'timestamp,event,extra\n';
+  events.forEach(e=>{
+    const extra = {...e}; delete extra.t; delete extra.name;
+    csv += `${e.t},${e.name},"${JSON.stringify(extra).replace(/"/g,'""')}"\n`;
+  });
+  csv += '\nTOTALS\n';
+  Object.entries(counts).forEach(([k,v])=>{ csv += `${k},${v}\n`; });
+  download('corerestore_metrics.csv', csv);
+});
+
+$('#btn-reset').addEventListener('click', ()=>{
+  if(confirm('Стереть локальную статистику?')){
+    storage.del(EVENTS_KEY); storage.del(COUNTS_KEY);
+    $('#peek').textContent = 'Счётчики пусты';
+  }
+});
+
+/* ====== ПРОЧЕЕ ====== */
+document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
