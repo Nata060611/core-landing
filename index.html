@@ -1,124 +1,185 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>CoreRestore — безопасный старт при диастазе</title>
-<meta name="description" content="Короткие безопасные практики для диастаза и тазового дна. Без скручиваний. Получите PDF-план и ссылку на установку.">
+<meta name="description" content="Короткие безопасные практики для диастаза и тазового дна. Без скручиваний. Получите PDF-план и ссылку на установку." />
+
 <style>
+/* ====== БАЗА ====== */
 :root{
-  --bg:#f6f7fb; --paper:#fff; --ink:#0f172a; --muted:#475569;
-  --accent:#3b82f6; --ok:#16a34a; --line:#e5e7eb;
+  --bg:#F6F7FB;         /* фон страницы */
+  --paper:#FFFFFF;      /* карточки */
+  --ink:#0F172A;        /* текст */
+  --muted:#475569;      /* вторичный текст */
+  --line:#E5E7EB;       /* границы */
+  --brand:#2563EB;      /* акцент */
+  --brand-weak:#EEF2FF; /* бледный акцент */
+  --ok:#16A34A;
+  --radius:16px;
+  --shadow:0 8px 28px rgba(15, 23, 42, .06);
 }
-*{box-sizing:border-box} img{max-width:100%;display:block}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-a{color:var(--accent);text-decoration:none}
-.wrap{max-width:1060px;margin:0 auto;padding:20px}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; color:var(--ink); background:var(--bg);
+  font: 16px/1.5 Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+img{max-width:100%; display:block}
+a{color:var(--brand); text-decoration:none}
+.container{max-width:1160px; margin-inline:auto; padding:0 24px}
 
-/* top */
-.top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.7);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.top .row{display:flex;justify-content:space-between;align-items:center;padding:10px 20px}
-.brand{display:flex;align-items:center;gap:8px;font-weight:700}
+/* ====== ХЕДЕР ====== */
+.top{
+  position:sticky; top:0; z-index:40;
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,.75);
+  border-bottom:1px solid var(--line);
+}
+.top .row{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 24px;
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800}
 .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--ok)}
-.btn{border:1px solid #1d4ed8;background:#3b82f6;color:#fff;padding:10px 14px;border-radius:12px;font-weight:700;cursor:pointer}
-.btn.secondary{background:#eef2ff;color:#1f2a5a;border-color:#c7d2fe}
-.badge{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;background:#fff;color:#334155}
-
-/* hero */
-.hero{
-  position:relative; isolation:isolate; color:#0b1220;
-  display:grid; grid-template-columns:1.03fr .97fr; gap:22px; align-items:center;
-  padding:24px 0;
+.nav{display:flex;gap:20px;align-items:center; font-size:14px; color:var(--muted)}
+.btn{
+  appearance:none; border:1px solid #1E40AF; background:var(--brand); color:#fff;
+  padding:10px 16px; font-weight:700; border-radius:12px; cursor:pointer;
+  box-shadow:0 3px 0 rgba(37,99,235,.25);
 }
-.hero::before{
-  content:""; position:absolute; inset:0; z-index:-2;
-  background:
-    radial-gradient(1200px 400px at -20% -10%, #e8f0ff 0%, transparent 60%),
-    radial-gradient(900px 400px at 120% 0%, #f5e9ff 0%, transparent 60%),
-    linear-gradient(180deg,#ffffff 0%,#f7f9ff 100%);
+.btn.secondary{background:var(--brand-weak); color:#20315d; border-color:#C7D2FE; box-shadow:none}
+
+/* ====== HERO ====== */
+.hero{padding:48px 0}
+.hero .grid{
+  display:grid; grid-template-columns: 1.05fr .95fr; gap:28px; align-items:center;
 }
-@media (max-width:940px){ .hero{grid-template-columns:1fr} }
-h1{margin:0 0 8px;font-size:36px;line-height:1.18}
-.lead{margin:0 0 14px;color:#334155}
+@media (max-width: 980px){
+  .hero .grid{grid-template-columns:1fr; gap:20px}
+}
+.badge{display:inline-flex;gap:10px;align-items:center;font-size:12px;
+  padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;color:#334155}
+h1{margin:10px 0 8px; font-weight:900; letter-spacing:-.4px; line-height:1.15;
+  font-size: clamp(28px, 5vw, 44px);}
+.lead{margin:0 0 14px; color:#334155; max-width:48ch}
+.hero-cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
 
-/* card */
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
-.figure img{border-radius:12px;border:1px solid var(--line)}
-.small{font-size:12px;color:#475569;margin-top:6px}
+.card{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:16px; box-shadow: var(--shadow);
+}
+.figure img{border-radius:12px; border:1px solid var(--line)}
+.figure figcaption{margin-top:6px; font-size:12px; color:var(--muted)}
+.card h3{margin:0 0 8px; font-size:18px}
 
-/* hooks */
-.hooks{display:grid;gap:10px;grid-template-columns:repeat(3,1fr);margin-top:16px}
-@media (max-width:940px){ .hooks{grid-template-columns:1fr} }
-.hook{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer}
-.hook:hover{box-shadow:0 8px 24px rgba(16,24,40,.08);transform:translateY(-1px);transition:.15s}
-.hook h4{margin:0 0 6px;font-size:18px}
-.hook p{margin:0;color:#334155}
+/* ====== БЛОКИ-КРЮЧКИ ====== */
+.section{padding: 24px 0}
+.hooks{display:grid; gap:16px; grid-template-columns: repeat(3, 1fr)}
+@media (max-width: 980px){ .hooks{grid-template-columns:1fr} }
+.hook{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+  padding:16px; cursor:pointer; transition:.15s ease;
+}
+.hook:hover{transform:translateY(-2px); box-shadow:var(--shadow)}
+.hook h4{margin:0 0 6px; font-size:18px}
+.hook p{margin:0; color:var(--muted)}
 
-/* sections */
-section{margin:22px 0}
-.title{font-size:24px;margin:0 0 6px}
-.muted{color:#475569}
-
-/* compact lists */
-.grid-3{display:grid;gap:10px;grid-template-columns:repeat(3,1fr)}
-@media (max-width:940px){ .grid-3{grid-template-columns:1fr} }
-.item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}
-
-/* accordions */
-details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}
-details+details{margin-top:10px}
-summary{cursor:pointer;font-weight:700;list-style:none}
+/* ====== СЕКЦИИ ====== */
+h2.title{margin:0 0 8px; font-size:26px}
+.muted{color:var(--muted)}
+details{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:14px}
+details+details{margin-top:12px}
+summary{cursor:pointer; font-weight:800; list-style:none}
 summary::-webkit-details-marker{display:none}
 
-/* modal */
-.modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.45)}
-.modal.open{display:grid}
-.box{background:#fff;border:1px solid var(--line);border-radius:16px;max-width:480px;width:92%;padding:18px}
-.field{display:flex;gap:8px;margin-top:10px}
-input[type=email]{flex:1;padding:12px;border:1px solid #c7d2fe;border-radius:10px}
+/* ====== СЕТКА 3 КАРТОЧКИ ====== */
+.grid-3{display:grid; gap:16px; grid-template-columns:repeat(3,1fr)}
+@media (max-width:980px){ .grid-3{grid-template-columns:1fr} }
+.item{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:16px}
+.item ul{margin:8px 0 0 18px; color:var(--muted)}
 
-/* footer */
-footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18px 0;margin-top:24px}
+/* ====== МОДАЛКА ====== */
+.modal{position:fixed; inset:0; display:none; place-items:center; background:rgba(2,6,23,.45)}
+.modal.open{display:grid}
+.box{background:#fff; border:1px solid var(--line); border-radius:18px; padding:18px; width:min(520px,92%)}
+.field{display:flex; gap:10px; margin-top:12px}
+input[type=email]{flex:1; padding:12px; border:1px solid #C7D2FE; border-radius:10px}
+
+/* ====== ПОДВАЛ ====== */
+footer{border-top:1px solid var(--line); color:var(--muted); font-size:12px; padding:20px 0; margin-top:28px}
 </style>
 </head>
 <body>
 
-<!-- header -->
-<div class="top">
-  <div class="row wrap">
+<!-- ====== HEADER ====== -->
+<header class="top">
+  <div class="row container">
     <div class="brand"><span class="dot"></span>CoreRestore</div>
-    <button class="btn" data-cta="header_install">Установить</button>
+    <nav class="nav">
+      <a href="#why">Почему не «пресс»</a>
+      <a href="#ex">3 упражнения</a>
+      <a href="#myths">Мифы</a>
+      <button class="btn" data-cta="header_install">Установить</button>
+    </nav>
   </div>
-</div>
+</header>
 
-<div class="wrap">
-
-  <!-- HERO -->
+<main>
   <section class="hero">
-    <div>
-      <div class="badge">Диастаз • Тазовое дно • Без скручиваний</div>
-      <h1>Плоский живот — безопасно при диастазе</h1>
-      <p class="lead">Короткие практики 10–12 минут: дыхание, поперечная мышца (ТВА) и тазовое дно. Без «домика» и боли.</p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
-        <button class="btn" data-cta="hero_install">Установить приложение</button>
-        <button class="btn secondary" data-cta="hero_pdf">Получить PDF-план</button>
+    <div class="container grid">
+      <!-- ЛЕВАЯ КОЛОНКА -->
+      <div>
+        <div class="badge">Диастаз • Тазовое дно • Без скручиваний</div>
+        <h1>Плоский живот без скручиваний — безопасно при диастазе</h1>
+        <p class="lead">Короткие 10–12-мин практики: активируем поперечную мышцу живота (ТВА) и тазовое дно. Без «домика» и боли. Начните сегодня.</p>
+        <div class="hero-cta">
+          <button class="btn" data-cta="hero_install">Установить приложение</button>
+          <button class="btn secondary" data-cta="hero_pdf">Получить PDF-план на неделю</button>
+        </div>
       </div>
-    </div>
 
-    <div class="card">
-      <div style="font-weight:700;margin-bottom:6px">Как выглядит диастаз</div>
-      <figure class="figure" data-cta="hero_diastaz_image">
-        <!-- абсолютная ссылка на твою картинку -->
-        <img src="https://nata060611.github.io/core-landing/img/diastaz.png"
-             alt="Схема: норма и диастаз — мышцы, пупок, белая линия живота">
-        <figcaption class="small">Слева — норма, справа — расширенная белая линия (диастаз).</figcaption>
-      </figure>
+      <!-- ПРАВАЯ КОЛОНКА: СХЕМА -->
+      <aside class="card">
+        <h3>Как выглядит диастаз</h3>
+
+        <!-- Картинка + надёжный fallback на SVG -->
+        <figure class="figure" data-cta="hero_diastaz_image">
+          <img
+            src="https://nata060611.github.io/core-landing/img/diastaz.png"
+            alt="Схема: норма и диастаз — мышцы, пупок, белая линия живота"
+            onerror="this.style.display='none';document.getElementById('dia-fb').style.display='block';"
+          />
+          <!-- Fallback (покажется, если картинка не загрузится) -->
+          <div id="dia-fb" style="display:none">
+            <svg viewBox="0 0 560 300" width="100%" aria-label="Схема диастаза">
+              <rect x="0" y="0" width="560" height="300" rx="12" fill="#F8FAFF" stroke="#E5E7EB"/>
+              <!-- Норма -->
+              <g transform="translate(40,40)">
+                <rect x="0" y="20" width="160" height="200" fill="#DBEAFE" stroke="#BFDBFE"/>
+                <rect x="75" y="20" width="10" height="200" fill="#FDE68A"/>
+                <text x="80" y="245" text-anchor="middle" fill="#0F172A" font-size="14" font-weight="700">Норма</text>
+              </g>
+              <!-- Диастаз -->
+              <g transform="translate(320,40)">
+                <rect x="0" y="20" width="160" height="200" fill="#DBEAFE" stroke="#BFDBFE"/>
+                <rect x="65" y="20" width="30" height="200" fill="#FBBF24"/>
+                <text x="80" y="245" text-anchor="middle" fill="#0F172A" font-size="14" font-weight="700">Диастаз</text>
+              </g>
+            </svg>
+          </div>
+
+          <figcaption>Слева — норма, справа — расширенная белая линия (диастаз).</figcaption>
+        </figure>
+      </aside>
     </div>
   </section>
 
-  <!-- краткие «крючки» -->
-  <section>
-    <div class="hooks">
+  <!-- ====== КРЮЧКИ ====== -->
+  <section class="section">
+    <div class="container hooks">
       <article class="hook" data-cta="hook_technique">
         <h4>Правильная техника</h4>
         <p>Как подтягивать низ живота и тазовое дно на выдохе — без «домика».</p>
@@ -134,84 +195,93 @@ footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18p
     </div>
   </section>
 
-  <!-- сворачиваемые блоки -->
-  <section>
-    <h2 class="title">Коротко: почему не «качать пресс»</h2>
-    <details>
-      <summary>Локального «сжигания» жира не существует</summary>
-      <div class="muted" style="margin-top:8px">
-        Скручивания не «убирают живот». Жир уходит по всему телу при дефиците калорий; база — силовые/кардио на всё тело.
-      </div>
-    </details>
-    <details>
-      <summary>При диастазе скручивания могут навредить</summary>
-      <div class="muted" style="margin-top:8px">
-        Увеличивают давление, провоцируют «домик» и растягивают белую линию. Старт — дыхание + ТВА/тазовое дно.
-      </div>
-    </details>
-    <details>
-      <summary>Что работает</summary>
-      <div class="muted" style="margin-top:8px">
-        Дефицит (сбалансированно), осанка, дыхание/ТВА+тазовое дно, простые силовые; темп — медленный для включения глубоких мышц.
-      </div>
-    </details>
-  </section>
-
-  <!-- упражнения -->
-  <section>
-    <h2 class="title">3 безопасных старта-упражнения</h2>
-    <div class="grid-3">
-      <div class="item">
-        <strong>Дыхание лёжа</strong>
-        <ul class="muted">
-          <li>Вдох 3с — рёбра в стороны/назад;</li>
-          <li>Выдох 3–4с — мягко подтянуть низ живота и тазовое дно;</li>
-          <li>Пауза — полное расслабление, без «домика».</li>
-        </ul>
-        <button class="btn secondary" data-cta="ex1_video" style="margin-top:6px">Короткое видео</button>
-      </div>
-      <div class="item">
-        <strong>Слайд пяткой</strong>
-        <ul class="muted">
-          <li>На выдохе включить ТВА/ТД;</li>
-          <li>Пятка вперёд — таз стабилен, живот не выпячивается.</li>
-        </ul>
-        <button class="btn secondary" data-cta="ex2_video" style="margin-top:6px">Короткое видео</button>
-      </div>
-      <div class="item">
-        <strong>Ягодичный мост</strong>
-        <ul class="muted">
-          <li>Выдох — включить ТВА/ТД, поднять таз до линии;</li>
-          <li>Вдох — опустить позвонок за позвонком.</li>
-        </ul>
-        <button class="btn secondary" data-cta="ex3_video" style="margin-top:6px">Короткое видео</button>
-      </div>
-    </div>
-    <div class="card" style="margin-top:12px">
-      <strong>Готово начать?</strong>
-      <p class="muted" style="margin:6px 0 10px">Получите недельный PDF с планом и ссылку на установку CoreRestore.</p>
-      <button class="btn" data-cta="plan_pdf">Получить PDF и ссылку</button>
+  <!-- ====== ПОЧЕМУ НЕ «ПРЕСС» ====== -->
+  <section id="why" class="section">
+    <div class="container">
+      <h2 class="title">Почему не «качать пресс»</h2>
+      <details open>
+        <summary>Локального «сжигания» жира не существует</summary>
+        <div class="muted" style="margin-top:8px">
+          Скручивания не «убирают живот». Жир уходит по всему телу при дефиците калорий; база — силовые/кардио на всё тело.
+        </div>
+      </details>
+      <details>
+        <summary>Скручивания при диастазе могут навредить</summary>
+        <div class="muted" style="margin-top:8px">
+          Увеличивают внутрибрюшное давление, провоцируют «домик» и растягивают белую линию. Старт — дыхание + ТВА/тазовое дно.
+        </div>
+      </details>
+      <details>
+        <summary>Что работает</summary>
+        <div class="muted" style="margin-top:8px">
+          Дефицит (сбалансированно), осанка, дыхание/ТВА+тазовое дно, простые силовые; темп — медленный для включения глубоких мышц.
+        </div>
+      </details>
     </div>
   </section>
 
-  <!-- мифы -->
-  <section>
-    <h2 class="title">Мифы и факты</h2>
-    <details><summary>«Чтобы убрать живот, качайте пресс»</summary>
-      <div class="muted" style="margin-top:8px">Факт: сначала дыхание, ТВА и тазовое дно + питание. Скручивания рано → «домик».</div>
-    </details>
-    <details><summary>«Можно сжечь жир локально»</summary>
-      <div class="muted" style="margin-top:8px">Факт: жир уходит по всему телу; помогает дефицит калорий и силовые на всё тело.</div>
-    </details>
-    <details><summary>«Планка всем и сразу»</summary>
-      <div class="muted" style="margin-top:8px">Факт: только при отсутствии «домика» и контроле давления; идём через прогрессии.</div>
-    </details>
+  <!-- ====== УПРАЖНЕНИЯ ====== -->
+  <section id="ex" class="section">
+    <div class="container">
+      <h2 class="title">3 безопасных старта-упражнения</h2>
+      <div class="grid-3">
+        <div class="item">
+          <strong>Дыхание лёжа</strong>
+          <ul>
+            <li>Вдох 3с — рёбра в стороны/назад;</li>
+            <li>Выдох 3–4с — мягко подтянуть низ живота и тазовое дно;</li>
+            <li>Пауза — полное расслабление, без «домика».</li>
+          </ul>
+          <button class="btn secondary" data-cta="ex1_video" style="margin-top:10px">Короткое видео</button>
+        </div>
+        <div class="item">
+          <strong>Слайд пяткой</strong>
+          <ul>
+            <li>На выдохе включить ТВА/ТД;</li>
+            <li>Пятка вперёд — таз стабилен, живот не выпячивается.</li>
+          </ul>
+          <button class="btn secondary" data-cta="ex2_video" style="margin-top:10px">Короткое видео</button>
+        </div>
+        <div class="item">
+          <strong>Ягодичный мост</strong>
+          <ul>
+            <li>Выдох — включить ТВА/ТД, поднять таз до линии;</li>
+            <li>Вдох — опустить позвонок за позвонком.</li>
+          </ul>
+          <button class="btn secondary" data-cta="ex3_video" style="margin-top:10px">Короткое видео</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <strong>Готово начать?</strong>
+        <p class="muted" style="margin:6px 0 10px">Получите недельный PDF с планом и ссылку на установку CoreRestore.</p>
+        <button class="btn" data-cta="plan_pdf">Получить PDF и ссылку</button>
+      </div>
+    </div>
   </section>
 
-  <footer>© <span id="y"></span> CoreRestore — образовательные материалы, не медицинская консультация.</footer>
-</div>
+  <!-- ====== МИФЫ ====== -->
+  <section id="myths" class="section">
+    <div class="container">
+      <h2 class="title">Мифы и факты</h2>
+      <details><summary>«Чтобы убрать живот, качайте пресс»</summary>
+        <div class="muted" style="margin-top:8px">Факт: сначала дыхание, ТВА и тазовое дно + питание. Скручивания рано → «домик».</div>
+      </details>
+      <details><summary>«Можно сжечь жир локально»</summary>
+        <div class="muted" style="margin-top:8px">Факт: жир уходит по всему телу; помогает дефицит калорий и силовые на всё тело.</div>
+      </details>
+      <details><summary>«Планка всем и сразу»</summary>
+        <div class="muted" style="margin-top:8px">Факт: только при отсутствии «домика» и контроле давления; идём через прогрессии.</div>
+      </details>
+    </div>
+  </section>
+</main>
 
-<!-- модалка e-mail -->
+<footer>
+  <div class="container">© <span id="y"></span> CoreRestore — образовательные материалы, не медицинская консультация.</div>
+</footer>
+
+<!-- ====== МОДАЛКА EMAIL ====== -->
 <div class="modal" id="modal">
   <div class="box">
     <h3 id="modal-title">Получить доступ</h3>
@@ -225,14 +295,16 @@ footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18p
 </div>
 
 <script>
-/* локальная метрика кликов + простая форма */
+/* ====== простая локальная метрика + форма ====== */
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
 const LS={get:(k,d)=>JSON.parse(localStorage.getItem(k)||JSON.stringify(d)),set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
 const EVENTS_KEY="cr.events", COUNTS_KEY="cr.counts";
+
 function track(name,extra={}) {
   const ev=LS.get(EVENTS_KEY,[]); ev.push({t:new Date().toISOString(),name,...extra}); LS.set(EVENTS_KEY,ev);
   const c=LS.get(COUNTS_KEY,{}); c[name]=(c[name]||0)+1; LS.set(COUNTS_KEY,c);
 }
+
 document.getElementById("y").textContent=new Date().getFullYear();
 
 const modal=$("#modal"); let ctx=null;
@@ -255,11 +327,6 @@ $$("[data-cta]").forEach(el=>{
   el.addEventListener("click",()=>{
     const id=el.getAttribute("data-cta"); track(id);
     openModal(id,"Получить материал","Оставьте e-mail — пришлём PDF и ссылку на установку.");
-  });
-});
-$$(".figure").forEach(el=>{
-  el.addEventListener("click",()=>{
-    track("hero_image"); openModal("hero_image","Скачать схему","Оставьте e-mail — пришлём схему и мини-видео.");
   });
 });
 </script>
