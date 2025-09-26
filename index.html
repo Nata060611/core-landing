@@ -131,7 +131,7 @@ footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18p
     </div>
   </section>
 
-  <!-- ТРИ КРЮЧКА (кликабельные) -->
+  <!-- ТРИ КРЮЧКА -->
   <section class="hook">
     <div class="hookgrid">
       <article class="mini" data-cta="hook_technique"><h4>Правильная техника</h4><p>Как подтягивать низ живота и тазовое дно на выдохе — без «домика».</p></article>
@@ -140,7 +140,7 @@ footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18p
     </div>
   </section>
 
-  <!-- ПОЧЕМУ НЕ «ПРЕСС» (ключевые факты) -->
+  <!-- ПОЧЕМУ НЕ ПРЕСС -->
   <section id="why">
     <h2 class="title">Почему «качать пресс» каждый день — не работает (и может навредить)</h2>
     <div class="grid-3">
@@ -174,7 +174,7 @@ footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18p
     </div>
   </section>
 
-  <!-- 3 БЕЗОПАСНЫХ УПРАЖНЕНИЯ -->
+  <!-- 3 УПРАЖНЕНИЯ -->
   <section id="ex">
     <h2 class="title">Три безопасных старта-упражнения</h2>
     <div class="grid-3">
@@ -277,18 +277,51 @@ footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18p
 </div>
 
 <script>
-/* ===== Подключите реальную отправку, когда будет готово ===== */
-const FORM_ENDPOINT = ""; // например, "https://formspree.io/f/xxxxxx"
+/* ========= CONFIG =========
+ * Укажи одно или оба — оставь пустым, если не нужно.
+ */
+const GA_MEASUREMENT_ID = "";        // например: "G-ABCDE12345"
+const PLAUSIBLE_DOMAIN   = "";        // например: "nata060611.github.io" или "mylanding.com"
 
+/* ========= Вспомогалки ========= */
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
 const LS={get:(k,d)=>JSON.parse(localStorage.getItem(k)||JSON.stringify(d)),set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
 const EVENTS_KEY="cr.events", COUNTS_KEY="cr.counts";
 
-function track(name,extra={}) {
+/* ========= Инициализация аналитики ========= */
+(function initAnalytics(){
+  // Plausible
+  if(PLAUSIBLE_DOMAIN){
+    window.plausible = window.plausible || function(){(window.plausible.q=window.plausible.q||[]).push(arguments)};
+    const s=document.createElement("script");
+    s.defer=true; s.setAttribute("data-domain",PLAUSIBLE_DOMAIN);
+    s.src="https://plausible.io/js/plausible.js";
+    document.head.appendChild(s);
+  }
+  // GA4
+  if(GA_MEASUREMENT_ID){
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=function(){dataLayer.push(arguments);}
+    const s=document.createElement("script");
+    s.async=true; s.src=`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(s);
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID); // авто-pageview
+  }
+})();
+
+/* ========= Трекинг ========= */
+function track(name,extra={}){
+  // локальная метрика
   const ev=LS.get(EVENTS_KEY,[]); ev.push({t:new Date().toISOString(),name,...extra}); LS.set(EVENTS_KEY,ev);
   const c=LS.get(COUNTS_KEY,{}); c[name]=(c[name]||0)+1; LS.set(COUNTS_KEY,c);
+  // GA4
+  if(window.gtag && GA_MEASUREMENT_ID){ window.gtag('event', name, extra); }
+  // Plausible
+  if(window.plausible){ window.plausible(name,{props:extra}); }
 }
 
+/* ========= Модалка ========= */
 const modal=$("#modal"); let ctx=null;
 function openModal(id,title,desc){
   ctx=id; $("#modal-title").textContent=title||"Получить доступ";
@@ -298,28 +331,33 @@ function openModal(id,title,desc){
 function closeModal(){ modal.classList.remove("open"); }
 modal.addEventListener("click",e=>{ if(e.target===modal) closeModal(); });
 
+/* ========= Отправка формы ========= */
+const FORM_ENDPOINT = ""; // реальный эндпоинт (Formspree / собственный), оставить "" для демо
 $("#send").addEventListener("click",async()=>{
   const email=$("#email").value.trim();
   if(!email){ alert("Введите e-mail"); return; }
   track("lead_submit",{email,source:ctx||"unknown"});
   if(FORM_ENDPOINT){
-    try{ await fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,source:ctx})}); }catch(e){}
+    try{
+      await fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,source:ctx})});
+    }catch(e){}
   }
   $("#ok").style.display="block"; setTimeout(closeModal,1200);
 });
 
-/* кликабельность всех CTA */
+/* ========= Навешиваем клики ========= */
 document.getElementById("y").textContent=new Date().getFullYear();
+
 $$("[data-cta]").forEach(el=>{
   el.addEventListener("click",()=>{
     const id=el.getAttribute("data-cta"); track(id);
     openModal(id,"Получить материал","Оставьте e-mail — пришлём PDF-план и ссылку на установку.");
   });
 });
-/* делаем кликабельной схему в герое */
 $$(".hero-figure").forEach(el=>{
   el.addEventListener("click",()=>{
-    track("hero_image"); openModal("hero_image","Скачать схему","Оставьте e-mail — пришлём схему и короткое видео.");
+    track("hero_image");
+    openModal("hero_image","Скачать схему","Оставьте e-mail — пришлём схему и короткое видео.");
   });
 });
 </script>
