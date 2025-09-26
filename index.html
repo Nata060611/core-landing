@@ -32,16 +32,10 @@ a{color:var(--accent);text-decoration:none}
 }
 .hero::before{
   content:""; position:absolute; inset:0; z-index:-2;
-  /* если нет картинки, останется градиент */
   background:
     radial-gradient(1200px 400px at -20% -10%, #e8f0ff 0%, transparent 60%),
     radial-gradient(900px 400px at 120% 0%, #f5e9ff 0%, transparent 60%),
     linear-gradient(180deg,#ffffff 0%,#f7f9ff 100%);
-}
-.hero::after{
-  content:""; position:absolute; inset:0; z-index:-3;
-  background:url("./img/hero-group.jpg") center/cover no-repeat;
-  opacity:.18; mix-blend-mode:multiply;
 }
 @media (max-width:940px){ .hero{grid-template-columns:1fr} }
 h1{margin:0 0 8px;font-size:36px;line-height:1.18}
@@ -99,7 +93,7 @@ footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18p
 
 <div class="wrap">
 
-  <!-- HERO — максимально простой -->
+  <!-- HERO -->
   <section class="hero">
     <div>
       <div class="badge">Диастаз • Тазовое дно • Без скручиваний</div>
@@ -114,14 +108,15 @@ footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18p
     <div class="card">
       <div style="font-weight:700;margin-bottom:6px">Как выглядит диастаз</div>
       <figure class="figure" data-cta="hero_diastaz_image">
-        <!-- ТВОЯ КАРТИНКА -->
-        <img src="./img/diastaz.png" alt="Схема: норма и диастаз — мышцы, пупок, белая линия живота">
+        <!-- абсолютная ссылка на твою картинку -->
+        <img src="https://nata060611.github.io/core-landing/img/diastaz.png"
+             alt="Схема: норма и диастаз — мышцы, пупок, белая линия живота">
         <figcaption class="small">Слева — норма, справа — расширенная белая линия (диастаз).</figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- 3 коротких крючка (вместо длинных текстов) -->
+  <!-- краткие «крючки» -->
   <section>
     <div class="hooks">
       <article class="hook" data-cta="hook_technique">
@@ -139,30 +134,30 @@ footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18p
     </div>
   </section>
 
-  <!-- Сжатые блоки с раскрытием (чтобы не пугать объёмом) -->
+  <!-- сворачиваемые блоки -->
   <section>
     <h2 class="title">Коротко: почему не «качать пресс»</h2>
     <details>
-      <summary>Главное — локального «сжигания» жира не существует</summary>
+      <summary>Локального «сжигания» жира не существует</summary>
       <div class="muted" style="margin-top:8px">
         Скручивания не «убирают живот». Жир уходит по всему телу при дефиците калорий; база — силовые/кардио на всё тело.
       </div>
     </details>
     <details>
-      <summary>При диастазе скручивания могут усугубить проблему</summary>
+      <summary>При диастазе скручивания могут навредить</summary>
       <div class="muted" style="margin-top:8px">
-        Скручивания повышают внутрибрюшное давление, провоцируют «домик» и растягивают белую линию. Старт — дыхание + ТВА/тазовое дно.
+        Увеличивают давление, провоцируют «домик» и растягивают белую линию. Старт — дыхание + ТВА/тазовое дно.
       </div>
     </details>
     <details>
       <summary>Что работает</summary>
       <div class="muted" style="margin-top:8px">
-        Дефицит (сбалансированно), осанка, дыхание/ТВА+тазовое дно, простые силовые движения; темп — медленный для включения глубоких мышц.
+        Дефицит (сбалансированно), осанка, дыхание/ТВА+тазовое дно, простые силовые; темп — медленный для включения глубоких мышц.
       </div>
     </details>
   </section>
 
-  <!-- 3 упражнения (в супер-сжатом виде) -->
+  <!-- упражнения -->
   <section>
     <h2 class="title">3 безопасных старта-упражнения</h2>
     <div class="grid-3">
@@ -199,7 +194,7 @@ footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18p
     </div>
   </section>
 
-  <!-- Мифы — тоже свёрнуто -->
+  <!-- мифы -->
   <section>
     <h2 class="title">Мифы и факты</h2>
     <details><summary>«Чтобы убрать живот, качайте пресс»</summary>
@@ -216,7 +211,7 @@ footer{color:#475569;font-size:12px;border-top:1px solid var(--line);padding:18p
   <footer>© <span id="y"></span> CoreRestore — образовательные материалы, не медицинская консультация.</footer>
 </div>
 
-<!-- единая e-mail модалка -->
+<!-- модалка e-mail -->
 <div class="modal" id="modal">
   <div class="box">
     <h3 id="modal-title">Получить доступ</h3>
